@@ -1,0 +1,40 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <!-- Ejercicio 1 -->
+    <div ng-controller="ControladorPadre">
+        Padre: <span ng-bind="mensaje"></span>
+        <br>
+        <input type="text" ng-model="mensaje" />
+        <div ng-controller="ControladorHijo">
+            Hijo: <span ng-bind="mensaje"></span>
+            <br>
+            <input type="text" ng-model="mensaje" />
+        </div>
+    </div>
+    <hr/>
+
+    <!-- Ejercicio 2 -->
+    <div ng-controller="SumaControlador">
+        <select ng-model="valorNuevo" ng-options="n for n in [1,2,3]"></select>
+        <input type="button" value="Agregar" ng-click="agregar()"> La suma de {{valores}} es {{sum}}.
+    </div>
+    <hr/>
+
+    <!-- Ejercicio 3 -->
+    <div ng-controller="FlechasController">
+        <input type="text" ng-model="mensaje" />
+        <br>
+        <strong ng-bind="mensaje"></strong>
+    </div>
+    <hr/>
+    
+</body>
+
+</html>
