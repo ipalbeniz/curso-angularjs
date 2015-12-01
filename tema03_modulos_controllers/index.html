@@ -1,0 +1,38 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <!-- Ejercicio 1 -->
+    <div ng-controller="OcultarController">
+        <p style="color:red;" ng-show="oculto">ROJO</p>
+        <p style="color:green;" ng-hide="oculto">VERDE</p>
+        <button ng-click="cambioColor()">Cambia Color</button>
+    </div>
+    <hr/>
+
+    <!-- Ejercicio 2 -->
+    <div ng-controller="SumarController">
+        <select ng-model="operando1" ng-options="num for num in valores"></select> +
+        <select ng-model="operando2" ng-options="num for num in valores"></select> = {{sumar()}}
+    </div>
+    <hr/>
+
+    <!-- Ejercicio 3 -->
+    <div ng-controller="MouseController">
+        <div ng-mouseenter="entraMouse($event)" 
+        	ng-mouseleave="saleMouse($event)" 
+        	ng-mousedown="clickMouse($event)" 
+        	style="width: 200px; height: 200px; border-style: solid; border-width: 2px; border-radius: 10px; background-image: url(http://static.123teachme.com/hq_images/r/raton.jpg)">
+        </div>
+        <br>
+        {{mouseMessage}}
+    </div>
+
+</body>
+
+</html>
