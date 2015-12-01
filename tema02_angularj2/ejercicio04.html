@@ -1,0 +1,32 @@
+<html ng-app>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-init="selectedCountry = 'es'; countries = [{'id': 'es', 'name': 'Spain'}, {'id': 'us', 'name': 'United States'}, {'id': 'uk', 'name': 'United Kingdom'}]">
+	Selecciona tu país de origen
+
+	<select ng-model="selectedCountry">
+      <option ng-repeat="country in countries" value="{{country.id}}">{{country.name}}</option>
+    </select>
+
+	<br>El pais seleccionado es <strong ng-bind="selectedCountry"></strong>
+
+	<hr>
+
+	<select ng-model="selectedCountry2" ng-options="country as country.name for country in countries">
+    </select>
+
+	<br>El pais seleccionado es <strong ng-bind="selectedCountry2.id"></strong>
+	<br>El pais (objeto) seleccionado es <strong ng-bind="selectedCountry2 | json"></strong>
+
+	<hr>
+
+	<label ng-repeat="country in countries">
+		<input type="radio" ng-model="$parent.selectedCountryRadio" ng-value="country" />{{country.name}}
+		<br>
+    </label>
+
+	<br>El pais seleccionado es <strong ng-bind="selectedCountryRadio.name"></strong>
+</body>
+</html>

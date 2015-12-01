@@ -1,0 +1,112 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<style type="text/css">
+
+	table, th, td {
+	   border: 1px solid black;
+	}
+
+	</style>
+	<script type="text/javascript">
+
+		function exercise01() {
+
+			var index = 0;
+			var numberCount = 5;
+			var sum = 0;
+
+			while (index < numberCount) {
+				var num = parseInt(prompt('Dime un numero'));
+				sum += num;
+				index ++;
+			}
+
+			alert('La media es de ' + sum / numberCount);
+		}
+
+		function exercise02() {
+
+			var index = 0;
+			var numberCount = 5;
+			var numbers = [];
+
+			while (index < numberCount) {
+				numbers[index] = parseInt(prompt('Dime un numero'));
+				index ++;
+			}
+
+			var sum = 0;
+			for (var i = 0; i < numberCount; i++) {
+			    sum += numbers[i];
+			}
+
+			alert('La media es de ' + sum / numberCount);
+		}
+
+		function changeImage(obj) {
+			var imageUrl = '';
+
+			switch (obj.id) {
+				case 'button1':
+					imageUrl = 'image01.jpg';
+					break;
+				case 'button2':
+					imageUrl = 'image02.jpg';
+					break;
+				case 'button3':
+					imageUrl = 'imagen3.png';
+					break;
+			}
+
+			var imageElement = document.getElementById("image");
+			imageElement.src = imageUrl;
+		}
+
+		function verifyYear(obj) {
+			if (obj.value === '2015') {
+				console.log('Año actual!');
+			} else {
+				console.log('Año incorrecto!');
+			}
+		}
+
+		function fillTable() {
+			var table = document.getElementById('table');
+
+			for (var rowIndex = 0; rowIndex < 6; rowIndex++) {
+				var row = table.insertRow(rowIndex);
+				for (var colIndex = 0; colIndex < 4; colIndex++) {
+					var col = row.insertCell(colIndex);
+					col.innerHTML = (rowIndex + 1) * (colIndex + 1);
+				};
+			};
+		}
+	</script>
+</head>
+<body>
+
+	<p><button onclick="exercise01()">Ejercicio 1</button></p>
+	
+	<p><button onclick="exercise02()">Ejercicio 2</button></p>
+
+	<p>
+		<button id="button1" onclick="changeImage(this);">Imagen 1</button>
+		<button id="button2" onclick="changeImage(this);">Imagen 2</button>
+		<button id="button3" onclick="changeImage(this);">Imagen 3</button>
+		<img id="image" src="imagen3.png" style="max-width: 200px;">
+	</p>
+
+	<p>
+		Escribe el año actual <input type="text" id="input" onchange="verifyYear(this)">
+	</p>
+
+	<p>
+		<button onclick="fillTable()">Tabla</button>
+		<table id="table">
+			
+		</table>
+	</p>
+
+</body>
+</html>
