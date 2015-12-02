@@ -2,25 +2,43 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="math.module.js"></script>
     <script src="app.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <!-- Ejercicio 1 -->
-    <div ng-controller="ContadorController">
-        <span ng-bind="cont.num"></span>
-        <button ng-click="incrementarContador()">Incrementa</button> {{cont}}
+
+    <div class="container">
+
+        <!-- Ejercicio 1 -->
+        <div ng-controller="ContadorController" class="jumbotron">
+            <span ng-bind="cont.num"></span>
+            <button ng-click="incrementarContador()" class="btn btn-primary">Incrementa</button> {{cont}}
+        </div>
+        <hr>
+
+        <!-- Ejercicio 2 -->
+        <div ng-controller="CalculadoraController" class="jumbotron">
+            <label for="number">Indica un numero</label>
+            <input type="number" ng-model="num" id="number">
+            <button ng-click="calcularCuadrado()" class="btn btn-primary">X<sup>2</sup></button>
+            <button ng-click="calcularCubo()" class="btn btn-primary">X<sup>3</sup></button>
+            <div>Respuesta: {{respuesta}}</div>
+        </div>
+
     </div>
-    <hr>
-    <!-- Ejercicio 2 -->
-    <div ng-controller="CalculadoraController">
-        Introduce un número
-        <input type="number" ng-model="num">
-        <button ng-click="calcularCuadrado()">X<sup>2</sup></button>
-        <button ng-click="calcularCubo()">X<sup>3</sup></button>
-        <div>Respuesta: {{respuesta}}</div>
-    </div>
+    
 </body>
 
 </html>
