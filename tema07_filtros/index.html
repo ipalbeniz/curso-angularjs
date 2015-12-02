@@ -1,0 +1,44 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <!-- Ejercicio 1 -->
+        <div ng-controller="PeliculasController">
+            <table class="table">
+                <thhead>
+                    <tr>
+                        <th>Nombre
+                            <input type="text" ng-model="filtroNombre"></input>
+                        </th>
+                        <th>Año
+                            <select ng-model="filtroAnyo" ng-init="anyos = [2013,2014,2015]">
+                                <option ng-repeat="anyo in anyos" value="{{anyo}}">{{anyo}}</option>
+                            </select>
+                        </th>
+                        <th>Oscar</th>
+                    </tr>
+                </thhead>
+                <tbody>
+                    <tr ng-repeat="peli in peliculas | filter: {year:filtroAnyo, name:filtroNombre}">
+                        <td ng-bind="peli.name"></td>
+                        <td ng-bind="peli.year"></td>
+                        <td ng-bind="peli.oscar"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+    </div>
+</body>
+
+</html>
