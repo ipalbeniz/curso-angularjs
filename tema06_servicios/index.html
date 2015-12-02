@@ -1,0 +1,26 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <!-- Ejercicio 1 -->
+    <div ng-controller="ContadorController">
+        <span ng-bind="cont.num"></span>
+        <button ng-click="incrementarContador()">Incrementa</button> {{cont}}
+    </div>
+    <hr>
+    <!-- Ejercicio 2 -->
+    <div ng-controller="CalculadoraController">
+        Introduce un número
+        <input type="number" ng-model="num">
+        <button ng-click="calcularCuadrado()">X<sup>2</sup></button>
+        <button ng-click="calcularCubo()">X<sup>3</sup></button>
+        <div>Respuesta: {{respuesta}}</div>
+    </div>
+</body>
+
+</html>
