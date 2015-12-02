@@ -1,0 +1,33 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <!-- Ejercicio 1 con ngTable -->
+        <div ng-controller="PeliculasController as pelisController">
+            <table ng-table="pelisController.tableParams" class="table" show-filter="true">
+                <tr ng-repeat="movie in $data">
+                    <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">{{movie.name}}</td>
+                    <td title="'Year'" filter="{ year: 'number'}" sortable="'year'">{{movie.year}}</td>
+                    <td title="'Oscar'" filter="{ oscar: 'text'}" sortable="'oscar'">{{movie.oscar}}</td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+    </div>
+</body>
+
+</html>

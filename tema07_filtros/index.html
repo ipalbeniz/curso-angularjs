@@ -17,19 +17,38 @@
             <table class="table">
                 <thhead>
                     <tr>
-                        <th>Nombre
-                            <input type="text" ng-model="filtroNombre"></input>
+                        <th>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="filtroNombre">Nombre</label>
+                                    <input type="text" id="filtroNombre" ng-model="filtroNombre" class="form-control" placeholder="Nombre"></input>
+                                </div>
+                            </form>
                         </th>
-                        <th>Año
-                            <select ng-model="filtroAnyo" ng-init="anyos = [2013,2014,2015]">
-                                <option ng-repeat="anyo in anyos" value="{{anyo}}">{{anyo}}</option>
-                            </select>
+                        <th>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="filtroAnyo">Año</label>
+                                    <select id="filtroAnyo" ng-model="filtroAnyo" class="form-control">
+                                        <option ng-repeat="anyo in anyosPosibles" value="{{anyo}}">{{anyo}}</option>
+                                    </select>
+                                </div>
+                            </form>
                         </th>
-                        <th>Oscar</th>
+                        <th>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="filtroOscar">Oscar</label>
+                                    <select id="filtroOscar" ng-model="filtroOscar" ng-init="opcionesOscar = [null,'si','no']" class="form-control">
+                                        <option ng-repeat="opcionOscar in opcionesOscar" value="{{opcionOscar}}">{{opcionOscar}}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </th>
                     </tr>
                 </thhead>
                 <tbody>
-                    <tr ng-repeat="peli in peliculas | filter: {year:filtroAnyo, name:filtroNombre}">
+                    <tr ng-repeat="peli in peliculas | filter: {year:filtroAnyo, name:filtroNombre, oscar:filtroOscar}">
                         <td ng-bind="peli.name"></td>
                         <td ng-bind="peli.year"></td>
                         <td ng-bind="peli.oscar"></td>

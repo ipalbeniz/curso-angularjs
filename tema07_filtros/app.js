@@ -1,10 +1,12 @@
 /*
  App module
  */
-angular.module('app', [])
+angular.module('app', ['ngTable'])
 
-.controller('PeliculasController', function($scope) {
-    $scope.peliculas = [{
+.controller('PeliculasController', function($scope, NgTableParams) {
+	var self = this;
+
+    var data = [{
         name: 'Boyhood',
         year: 2015,
         oscar: 'no'
@@ -45,4 +47,6 @@ angular.module('app', [])
         year: 2013,
         oscar: 'no'
     }];
+
+    self.tableParams = new NgTableParams({ count: 5}, { counts: [5, 10, 25], dataset: data});
 });
