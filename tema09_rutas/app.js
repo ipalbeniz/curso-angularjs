@@ -16,6 +16,18 @@ angular.module('app', ['ngRoute'])
         });
 })
 
+.filter('unique', function() {
+    return function(elements, uniqueBy) {
+        var uniqueElements = new Set();
+
+        for (var i = elements.length - 1; i >= 0; i--) {
+            uniqueElements.add(elements[i][uniqueBy]);
+        }
+
+        return Array.from(uniqueElements);
+    };
+})
+
 .factory('ItemService', function(filterFilter) {
     var elementos = [{
         id: 1,
@@ -59,38 +71,31 @@ angular.module('app', ['ngRoute'])
         color: 'blanco'
     }];
 
-    var colors = new Set();
-
-    for (var i = elementos.length - 1; i >= 0; i--) {
-        colors.add(elementos[i].color);
-    }
-
-    var colorsArray = Array.from(colors);
-
     return {
         query: function(params) {
             return filterFilter(elementos, params);
         },
         get: function(params) {
             return this.query(params)[0];
-        },
-        colors: function() {
-            return colorsArray;
         }
     };
 })
 
 .controller('HomeController', function($scope, $location, ItemService) {
     $scope.location = $location.absUrl();
-    $scope.colors = ItemService.colors();
+    $scope.items = ItemService.query();
 })
 
 .controller('ItemsController', function($scope, $location, ItemService) {
     $scope.location = $location.absUrl();
-    $scope.items = ItemService.query({color: $location.search().color});
+    $scope.items = ItemService.query({
+        color: $location.search().color
+    });
 })
 
 .controller('ItemController', function($scope, $location, $routeParams, ItemService) {
     $scope.location = $location.absUrl();
-    $scope.items = ItemService.query({id: $routeParams.itemId});
+    $scope.items = ItemService.query({
+        id: $routeParams.itemId
+    });
 });
