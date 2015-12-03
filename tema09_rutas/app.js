@@ -11,8 +11,8 @@ angular.module('app', ['ngRoute'])
             templateUrl: './vistas/items/index.html'
         })
         .when('/item/:itemId', {
-            controller: 'ItemController',
-            templateUrl: './vistas/items/index.html'
+            controller: 'ItemDetailController',
+            templateUrl: './vistas/items/detail.html'
         });
 })
 
@@ -93,9 +93,9 @@ angular.module('app', ['ngRoute'])
     });
 })
 
-.controller('ItemController', function($scope, $location, $routeParams, ItemService) {
+.controller('ItemDetailController', function($scope, $location, $routeParams, ItemService) {
     $scope.location = $location.absUrl();
-    $scope.items = ItemService.query({
+    $scope.item = ItemService.query({
         id: $routeParams.itemId
-    });
+    })[0];
 });

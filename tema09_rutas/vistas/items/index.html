@@ -3,6 +3,6 @@
 <a ng-href="#/">Home</a>
 <ol>
     <li ng-repeat="item in items">
-        {{item.id}} - {{item.name}} - {{item.color}}
+        <a href="#/item/{{item.id}}">{{item.id}} - {{item.name}} - {{item.color}}</a>
     </li>
 </ol>
