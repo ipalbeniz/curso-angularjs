@@ -3,11 +3,15 @@ angular.module('app', ['ngRoute'])
 .config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'ItemsController',
+            controller: 'HomeController',
             templateUrl: './vistas/home.html'
         })
         .when('/items', {
             controller: 'ItemsController',
+            templateUrl: './vistas/items/index.html'
+        })
+        .when('/item/:itemId', {
+            controller: 'ItemController',
             templateUrl: './vistas/items/index.html'
         });
 })
@@ -76,8 +80,17 @@ angular.module('app', ['ngRoute'])
     };
 })
 
+.controller('HomeController', function($scope, $location, ItemService) {
+    $scope.location = $location.absUrl();
+    $scope.colors = ItemService.colors();
+})
+
 .controller('ItemsController', function($scope, $location, ItemService) {
     $scope.location = $location.absUrl();
     $scope.items = ItemService.query({color: $location.search().color});
-    $scope.colors = ItemService.colors();
+})
+
+.controller('ItemController', function($scope, $location, $routeParams, ItemService) {
+    $scope.location = $location.absUrl();
+    $scope.items = ItemService.query({id: $routeParams.itemId});
 });
