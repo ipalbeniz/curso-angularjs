@@ -1,0 +1,51 @@
+<html ng-app="app">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <script src="lib/lodash.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="lib/angular-simple-logger.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="lib/angular-google-maps.min.js"></script>
+    <script src="lib/loading-bar.min.js"></script>
+    <script src="lib/autocomplete.min.js"></script>
+    <script src='https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places'></script>
+
+
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/loading-bar.min.css">
+    <link rel="stylesheet" href="css/autocomplete.min.css">
+
+    <style type="text/css">
+        .angular-google-map-container { height: 400px; }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <!-- Ejercicio 1 -->
+        <div ng-controller="WeatherController">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="cityName" class="form-control" id="cityName" placeholder="City Name"></input>
+                    <button class="btn btn-default" ng-click="getWeather()">Get Weather</button>
+                </div>
+            </form>
+
+            <h1>{{weather.name}}</h1>
+            <img ng-show="weather != null" src="{{iconUrl}}" style="float:right;" />
+            <h3 ng-show="weather != null">{{weather.main.temp}} ºC</h3>
+            <p>{{weather.weather[0].description}}</p>
+
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+        </div>
+        <hr>
+    </div>
+</body>
+
+</html>
