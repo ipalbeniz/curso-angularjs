@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="css/autocomplete.min.css">
 
     <style type="text/css">
-        .angular-google-map-container { height: 400px; }
+        .angular-google-map-container { 
+            height: 400px; 
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -32,7 +35,7 @@
         <div ng-controller="WeatherController">
             <form class="form-inline">
                 <div class="form-group">
-                    <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="cityName" class="form-control" id="cityName" placeholder="City Name"></input>
+                    <input type="text" g-places-autocomplete options="autocompleteOptions" force-selection="true" ng-model="citySelected" class="form-control" id="citySelected" placeholder="City Name"></input>
                     <button class="btn btn-default" ng-click="getWeather()">Get Weather</button>
                 </div>
             </form>
@@ -43,6 +46,8 @@
             <p>{{weather.weather[0].description}}</p>
 
             <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+            <p ng-show="citySelected != null">Debug:</p>
+            <pre ng-show="citySelected != null">{{citySelected | json}}</pre>
         </div>
         <hr>
     </div>
